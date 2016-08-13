@@ -1,0 +1,24 @@
+{
+  "name": "newworld",
+  "version": "1.0.0",
+  "description": "A price randomizer for the Icelandic board game New World",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hogniRunar/newworld.git"
+  },
+  "author": "Hogni Ingimarsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hogniRunar/newworld/issues"
+  },
+  "homepage": "https://github.com/hogniRunar/newworld#readme",
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "vue": "^1.0.26",
+    "vue-resource": "^0.9.3"
+  }
+}
