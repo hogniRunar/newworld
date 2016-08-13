@@ -18,6 +18,7 @@
   "homepage": "https://github.com/hogniRunar/newworld#readme",
   "devDependencies": {
     "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
     "vue": "^1.0.26",
     "vue-resource": "^0.9.3"
   }
