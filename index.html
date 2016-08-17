@@ -14,24 +14,27 @@
   <!-- navigation bar -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <a class="navbar-brand"><i class="glyphicon glyphicon-bullhorn"></i> Vue Events Bulletin Board</a>
+      <a class="navbar-brand">New world</a>
     </div>
   </nav>
 
   <!-- main body of our application -->
-  <div class="container" id="events">
+  <div class="container" id="prices">
 
     <!-- add an event form -->
     <div class="col-sm-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3>Add an Event</h3>
-        </div>
-        <div class="panel-body">
-
-        </div>
-
-      </div>
+      <ul>
+        <li v-for="(key, value) in materials">
+          {{ key }}: {{ value }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-6">
+      <ul>
+        <li v-for="(key, value) in stocks">
+          {{ key }}: {{ value }}
+        </li>
+      </ul>
     </div>
 
     <!-- show the events -->
