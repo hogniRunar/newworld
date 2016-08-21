@@ -35,18 +35,17 @@ new Vue({
       for(var materialField in rawMaterials){
         var randomNumber = Math.floor(Math.random() * 3);
         tempMaterialObject[materialField] = rawMaterials[materialField][this.prices[randomNumber]];
-
       }
 
       for(var stockField in stocks){
         var randomNumber = Math.floor(Math.random() * 3);
+        var tempObject = {}
         for(var innerField in stocks[stockField]){
-            console.log(stocks[stockField][innerField][this.prices[randomNumber]]);
+          tempObject[innerField] = stocks[stockField][innerField][this.prices[randomNumber]];
         }
-        tempStockObject[stockField] = stocks[stockField][this.prices[randomNumber]];
-
+        tempStockObject[stockField] = tempObject;
       }
-      console.log(tempStockObject);
+      console.log(tempStockObject['B&L']);
       this.$set('materials', tempMaterialObject);
       this.$set('stocks', tempStockObject);
     }
