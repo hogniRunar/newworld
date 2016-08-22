@@ -30,6 +30,7 @@ new Vue({
     },
 
     randomizePrices: function(){
+      this.history = [];
       this.currentTotal = 0;
       var rawMaterials = this.json['Hráefni'];
       var stocks = this.json['Hlutabréf'];
