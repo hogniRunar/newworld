@@ -7,10 +7,12 @@ new Vue({
   // for the application
   data: {
     json: {},
-    jsonurl: 'https://api.myjson.com/bins/4prxn',
+    jsonurl: 'https://api.myjson.com/bins/1wknb',
     prices: ['low', 'med', 'high'],
     materials: {},
-    stocks: {}
+    stocks: {},
+    currentTotal: 0,
+    history: []
   },
 
   // Anything within the ready function will run when the application loads
@@ -26,28 +28,62 @@ new Vue({
         this.randomizePrices();
       });
     },
+
     randomizePrices: function(){
+      this.currentTotal = 0;
       var rawMaterials = this.json['Hráefni'];
       var stocks = this.json['Hlutabréf'];
-      var tempMaterialObject = {};
-      var tempStockObject = {};
+      var returnMaterialObject = {};
+      var returnStockObject = {};
 
       for(var materialField in rawMaterials){
         var randomNumber = Math.floor(Math.random() * 3);
-        tempMaterialObject[materialField] = rawMaterials[materialField][this.prices[randomNumber]];
+        var priceArray = [];
+        var priceCategory = this.prices[randomNumber];
+        var priceNumber = rawMaterials[materialField][priceCategory];
+        priceArray.push(priceNumber);
+        priceArray.push(priceCategory);
+        returnMaterialObject[materialField] = priceArray;
       }
 
       for(var stockField in stocks){
         var randomNumber = Math.floor(Math.random() * 3);
-        var tempObject = {}
+        var priceArray = [];
+        var priceCategory = this.prices[randomNumber];
+        priceArray.push(priceCategory)
         for(var innerField in stocks[stockField]){
-          tempObject[innerField] = stocks[stockField][innerField][this.prices[randomNumber]];
+          var priceNumber = stocks[stockField][innerField][priceCategory];
+          priceArray.push(priceNumber);
         }
-        tempStockObject[stockField] = tempObject;
+        returnStockObject[stockField] = priceArray;
       }
-      console.log(tempStockObject['B&L']);
-      this.$set('materials', tempMaterialObject);
-      this.$set('stocks', tempStockObject);
+      this.$set('materials', returnMaterialObject);
+      this.$set('stocks', returnStockObject);
+    },
+
+    addPrice: function(price, key){
+      this.currentTotal += price;
+      var historyArray = [];
+      historyArray.push(key);
+      historyArray.push(price);
+      this.history.push(historyArray);
+    },
+
+    undoAction: function(){
+      if(this.history.length === 0) {
+        return;
+      }
+      var subraction = this.history[this.history.length - 1][1];
+      this.currentTotal -= subraction;
+      this.history.pop();
+    },
+
+    isNumber: function(number) {
+      if(number === parseInt(number, 10)){
+        return true
+      }else{
+        return false;
+      }
     }
 
   }

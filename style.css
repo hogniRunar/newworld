@@ -1,0 +1,52 @@
+#stocks {
+    text-align: center;
+    width: 100%;
+}
+
+#raw {
+    text-align: center;
+    width: 50%;
+}
+
+th {
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: : 2px;
+}
+
+#leftie {
+  text-align: left;
+}
+
+.bottomPage {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.container-fluid {
+  text-align: center;
+}
+
+#total {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+img {
+  width: 25px;
+  height: 25px;
+}
+
+tr {
+  padding-bottom: 10px;
+}
+
+#history {
+  font-size: 16px;
+  margin-bottom: -5px;
+  font-weight: bold;
+}
+
+#buttons {
+  margin-bottom: 10px;
+}

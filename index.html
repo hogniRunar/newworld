@@ -8,39 +8,62 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-</head>
-<body>
+  <link rel="stylesheet" href="style.css">
 
-  <!-- navigation bar -->
+</head>
+<body id="prices">
+
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <a class="navbar-brand">New world</a>
+      <a class="navbar-brand">New world price calculator</a>
     </div>
   </nav>
 
-  <!-- main body of our application -->
-  <div class="container" id="prices">
-
-    <!-- add an event form -->
+  <div class="container">
     <div class="col-sm-6">
-      <ul>
-        <li v-for="(key, value) in materials">
-          {{ key }}: {{ value }}
-        </li>
-      </ul>
+      <table id="raw">
+        <tr>
+          <th id="leftie">Name</th>
+          <th>Price</th>
+        </tr>
+        <tr v-for="(key, value) in materials">
+          <td id="leftie">{{ key }}</td>
+          <td v-for="secondKey in materials[key]">
+            <a href="#" v-on:click="addPrice(secondKey, key)" v-if="isNumber(secondKey)">{{ secondKey }}</a>
+            <img v-if="!isNumber(secondKey)" :src="secondKey + '.png'"/>
+          </td>
+        </tr>
+      </table>
     </div>
     <div class="col-sm-6">
-      <ul>
-        <li v-for="(key, value) in stocks">
-          {{ key }}: {{ value }}
-        </li>
-      </ul>
+      <table id="stocks">
+        <tr>
+          <th id="leftie">Name</th>
+          <th/>
+          <th>0 houses</th>
+          <th>1 house</th>
+          <th>2 houses</th>
+          <th>3 houses</th>
+          <th>4 houses</th>
+        </tr>
+        <tr v-for="(key, value) in stocks">
+          <td id="leftie">{{ key }}</td>
+          <td v-for="secondKey in stocks[key]">
+            <a href="#" v-on:click="addPrice(secondKey, key)" v-if="isNumber(secondKey)">{{ secondKey }}</a>
+            <img v-if="!isNumber(secondKey)" :src="secondKey + '.png'"/>
+          </td>
+        </tr>
+      </table>
     </div>
 
-    <!-- show the events -->
-    <div class="col-sm-6">
-      <div class="list-group">
-
+    <div class="col-sm-12">
+      <div class="bottomPage">
+        <p id="total">Total: {{ currentTotal }}</p>
+        <div id="buttons">
+          <button v-on:click="randomizePrices()">Randomize</button>
+          <button v-on:click="undoAction()">Undo</button>
+        </div>
+        <p id="history" v-for="item in history" track-by="$index">{{ item }}</p>
       </div>
     </div>
   </div>
