@@ -60,8 +60,8 @@
       <div class="bottomPage">
         <p id="total">Total: {{ currentTotal }}</p>
         <div id="buttons">
-          <button v-on:click="randomizePrices()">Randomize</button>
-          <button v-on:click="undoAction()">Undo</button>
+          <button class="btn btn-primary" v-on:click="randomizePrices()">Randomize</button>
+          <button class="btn btn-danger" v-on:click="undoAction()">Undo</button>
         </div>
         <p id="history" v-for="item in history" track-by="$index">{{ item }}</p>
       </div>
