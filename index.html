@@ -50,6 +50,8 @@
           <td id="leftie">{{ key }}</td>
           <td v-for="secondKey in stocks[key]">
             <a href="#" v-on:click="addPrice(secondKey, key)" v-if="isNumber(secondKey)">{{ secondKey }}</a>
+            <button id="subAddButtons"v-if="isNumber(secondKey)" v-on:click="addPrice(secondKey, key)">+</button>
+            <button id="subAddButtons" v-if="isNumber(secondKey)" v-on:click="subPrice(secondKey, key)">-</button>
             <img v-if="!isNumber(secondKey)" :src="secondKey + '.png'"/>
           </td>
         </tr>
@@ -63,7 +65,11 @@
           <button class="btn btn-primary" v-on:click="randomizePrices()">Randomize</button>
           <button class="btn btn-danger" v-on:click="undoAction()">Undo</button>
         </div>
-        <p id="history" v-for="item in history" track-by="$index">{{ item }}</p>
+        <p id="history" v-for="item in history" track-by="$index">{{ item }}
+          <a href="#" v-on:click="removeFromHistory($index, history[$index][1])">
+            <img id="xmark" src="xmark.png"/>
+          </a>
+        </p>
       </div>
     </div>
   </div>

@@ -70,13 +70,29 @@ new Vue({
       this.history.push(historyArray);
     },
 
+    subPrice: function(price, key){
+      this.currentTotal -= price;
+      var historyArray = [];
+      historyArray.push(key);
+      historyArray.push(-price);
+      this.history.push(historyArray);
+    },
+
     undoAction: function(){
-      if(this.history.length === 0) {
+      if(this.history.length < 1) {
         return;
       }
       var subraction = this.history[this.history.length - 1][1];
       this.currentTotal -= subraction;
       this.history.pop();
+    },
+
+    removeFromHistory: function(index, price){
+      if(this.history.length < 1) {
+        return;
+      }
+      this.history.splice(index, 1);
+      this.currentTotal -= price;
     },
 
     isNumber: function(number) {

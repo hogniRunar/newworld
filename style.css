@@ -50,3 +50,15 @@ tr {
 #buttons {
   margin-bottom: 10px;
 }
+
+#subAddButtons {
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+#xmark {
+  height: 10px;
+  width: 10px;
+}
