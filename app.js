@@ -78,15 +78,6 @@ new Vue({
       this.history.push(historyArray);
     },
 
-    undoAction: function(){
-      if(this.history.length < 1) {
-        return;
-      }
-      var subraction = this.history[this.history.length - 1][1];
-      this.currentTotal -= subraction;
-      this.history.pop();
-    },
-
     removeFromHistory: function(index, price){
       if(this.history.length < 1) {
         return;

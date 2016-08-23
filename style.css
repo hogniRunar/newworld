@@ -5,7 +5,7 @@
 
 #raw {
     text-align: center;
-    width: 50%;
+    width: 60%;
 }
 
 th {
@@ -16,6 +16,10 @@ th {
 
 #leftie {
   text-align: left;
+}
+
+#rightie {
+  text-align: right;
 }
 
 .bottomPage {
@@ -50,13 +54,35 @@ tr {
 #buttons {
   margin-bottom: 10px;
 }
-
+/*
 #subAddButtons {
+  height: 25px;
+  width: 25px;
+  border-radius: 25px;
+  background-color: rgb(255, 102, 102);
+}
+*/
+
+.subAddButtons {
+	-moz-box-shadow:inset 0px 39px 0px -24px #e67a73;
+	-webkit-box-shadow:inset 0px 39px 0px -24px #e67a73;
+	box-shadow:inset 0px 39px 0px -24px #e67a73;
+	background-color:#e4685d;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
   height: 20px;
   width: 20px;
-  background-color: white;
-  border: 1px solid black;
 }
+
 
 #xmark {
   height: 10px;

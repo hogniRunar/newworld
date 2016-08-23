@@ -24,13 +24,17 @@
       <table id="raw">
         <tr>
           <th id="leftie">Name</th>
+          <th/>
           <th>Price</th>
         </tr>
         <tr v-for="(key, value) in materials">
           <td id="leftie">{{ key }}</td>
-          <td v-for="secondKey in materials[key]">
-            <a href="#" v-on:click="addPrice(secondKey, key)" v-if="isNumber(secondKey)">{{ secondKey }}</a>
-            <img v-if="!isNumber(secondKey)" :src="secondKey + '.png'"/>
+          <td v-for="price in materials[key]">
+            <img v-if="!isNumber(price)" :src="price + '.png'"/>
+          </td>
+          <td id="rightie" v-for="price in materials[key]">
+            <a href="#" v-on:click="addPrice(price, key)" v-if="isNumber(price)">{{ price }}</a>
+            <button class="subAddButtons" v-if="isNumber(price)" v-on:click="subPrice(price, key)">-</button>
           </td>
         </tr>
       </table>
@@ -48,11 +52,10 @@
         </tr>
         <tr v-for="(key, value) in stocks">
           <td id="leftie">{{ key }}</td>
-          <td v-for="secondKey in stocks[key]">
-            <a href="#" v-on:click="addPrice(secondKey, key)" v-if="isNumber(secondKey)">{{ secondKey }}</a>
-            <button id="subAddButtons"v-if="isNumber(secondKey)" v-on:click="addPrice(secondKey, key)">+</button>
-            <button id="subAddButtons" v-if="isNumber(secondKey)" v-on:click="subPrice(secondKey, key)">-</button>
-            <img v-if="!isNumber(secondKey)" :src="secondKey + '.png'"/>
+          <td id="rightie" v-for="price in stocks[key]">
+            <a href="#" v-on:click="addPrice(price, key)" v-if="isNumber(price)">{{ price }}</a>
+            <button class="subAddButtons" v-if="isNumber(price)" v-on:click="subPrice(price, key)">-</button>
+            <img v-if="!isNumber(price)" :src="price + '.png'"/>
           </td>
         </tr>
       </table>
@@ -63,7 +66,6 @@
         <p id="total">Total: {{ currentTotal }}</p>
         <div id="buttons">
           <button class="btn btn-primary" v-on:click="randomizePrices()">Randomize</button>
-          <button class="btn btn-danger" v-on:click="undoAction()">Undo</button>
         </div>
         <p id="history" v-for="item in history" track-by="$index">{{ item }}
           <a href="#" v-on:click="removeFromHistory($index, history[$index][1])">
