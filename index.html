@@ -34,7 +34,7 @@
           </td>
           <td id="rightie" v-for="price in materials[key]">
             <a href="#" v-on:click="addPrice(price, key)" v-if="isNumber(price)">{{ price }}</a>
-            <button class="subAddButtons" v-if="isNumber(price)" v-on:click="subPrice(price, key)">-</button>
+            <button class="subAddButtons" v-if="isNumber(price)" v-on:click="subPrice(-price, key)">-</button>
           </td>
         </tr>
       </table>

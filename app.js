@@ -63,18 +63,18 @@ new Vue({
     },
 
     addPrice: function(price, key){
-      this.currentTotal += price;
-      var historyArray = [];
-      historyArray.push(key);
-      historyArray.push(price);
-      this.history.push(historyArray);
-    },
-
-    subPrice: function(price, key){
       this.currentTotal -= price;
       var historyArray = [];
       historyArray.push(key);
       historyArray.push(-price);
+      this.history.push(historyArray);
+    },
+
+    subPrice: function(price, key){
+      this.currentTotal += price;
+      var historyArray = [];
+      historyArray.push(key);
+      historyArray.push(price);
       this.history.push(historyArray);
     },
 
